@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MD_CirQueue	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin KEYWORD2
+push	KEYWORD2
+pop	KEYWORD2
+isFull	KEYWORD2
+isEmpty	KEYWORD2
+clear	KEYWORD2
+setFullOverwrite	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
