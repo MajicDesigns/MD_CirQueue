@@ -10,7 +10,6 @@ void showStatus()
 {
   if (Q.isEmpty()) Serial.print("\n->Q EMPTY");
   if (Q.isFull()) Serial.print("\n->Q FULL");
-  
 }
 
 void setup() 

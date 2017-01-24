@@ -6,7 +6,8 @@ var class_m_d___cir_queue =
     [ "clear", "class_m_d___cir_queue.html#a11c6ec6dab1e6b7a7cea408bcd13e99a", null ],
     [ "isEmpty", "class_m_d___cir_queue.html#abcc453a7e02175eb7e3e9cdef3906934", null ],
     [ "isFull", "class_m_d___cir_queue.html#a4e8c20659a36d69b87b0db1a8f7c726d", null ],
-    [ "pop", "class_m_d___cir_queue.html#acaba28d37ecf016d3c3a4012275d5e57", null ],
+    [ "peek", "class_m_d___cir_queue.html#a67a4d07b02bb29218f60832631a31ae6", null ],
+    [ "pop", "class_m_d___cir_queue.html#a01ca4068f6e2891f79a67b6aa7bbfdc5", null ],
     [ "push", "class_m_d___cir_queue.html#a5edf067a72300842efbd5692fc6c3e8a", null ],
     [ "setFullOverwrite", "class_m_d___cir_queue.html#a343d0cfe05b291f18fc6bb679112850e", null ]
 ];

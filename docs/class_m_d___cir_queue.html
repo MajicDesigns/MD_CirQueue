@@ -104,8 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a11c6ec6dab1e6b7a7cea408bcd13e99a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5edf067a72300842efbd5692fc6c3e8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___cir_queue.html#a5edf067a72300842efbd5692fc6c3e8a">push</a> (uint8_t *itm)</td></tr>
 <tr class="separator:a5edf067a72300842efbd5692fc6c3e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaba28d37ecf016d3c3a4012275d5e57"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___cir_queue.html#acaba28d37ecf016d3c3a4012275d5e57">pop</a> (uint8_t *itm)</td></tr>
-<tr class="separator:acaba28d37ecf016d3c3a4012275d5e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ca4068f6e2891f79a67b6aa7bbfdc5"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___cir_queue.html#a01ca4068f6e2891f79a67b6aa7bbfdc5">pop</a> (uint8_t *itm)</td></tr>
+<tr class="separator:a01ca4068f6e2891f79a67b6aa7bbfdc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a4d07b02bb29218f60832631a31ae6"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___cir_queue.html#a67a4d07b02bb29218f60832631a31ae6">peek</a> (uint8_t *itm)</td></tr>
+<tr class="separator:a67a4d07b02bb29218f60832631a31ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a343d0cfe05b291f18fc6bb679112850e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___cir_queue.html#a343d0cfe05b291f18fc6bb679112850e">setFullOverwrite</a> (bool b)</td></tr>
 <tr class="separator:a343d0cfe05b291f18fc6bb679112850e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcc453a7e02175eb7e3e9cdef3906934"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___cir_queue.html#abcc453a7e02175eb7e3e9cdef3906934">isEmpty</a> (void)</td></tr>
@@ -251,14 +253,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acaba28d37ecf016d3c3a4012275d5e57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acaba28d37ecf016d3c3a4012275d5e57">&#9670;&nbsp;</a></span>pop()</h2>
+<a id="a67a4d07b02bb29218f60832631a31ae6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a4d07b02bb29218f60832631a31ae6">&#9670;&nbsp;</a></span>peek()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t * MD_CirQueue::pop </td>
+          <td class="memname">uint8_t* MD_CirQueue::peek </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>itm</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Peek at the next item in the queue</p>
+<p>Return a copy of the first item in the queue, copied into the buffer specified, returning a pointer to the copied item. If no items are available (queue is empty), then no data is copied and the method returns a NULL pointer. This does not remove the item in the queue but gives a 'llok-ahead' capability in processing the queue.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itm</td><td>a pointer to data buffer for the copied item to be saved. Data size must be size specified in the constructor. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the memory buffer or NULL if the queue is empty </dd></dl>
+
+</div>
+</div>
+<a id="a01ca4068f6e2891f79a67b6aa7bbfdc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01ca4068f6e2891f79a67b6aa7bbfdc5">&#9670;&nbsp;</a></span>pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* MD_CirQueue::pop </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>itm</em></td><td>)</td>
@@ -294,7 +323,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Push an item into the queue</p>
-<p>Place the item passed into the end of the queue. The item will be returned to the calling proogram, in FIFO order, using <a class="el" href="class_m_d___cir_queue.html#acaba28d37ecf016d3c3a4012275d5e57">pop()</a>. If the buffer is already full before the <a class="el" href="class_m_d___cir_queue.html#a5edf067a72300842efbd5692fc6c3e8a">push()</a>, the behavior will depend on the the setting controlled by the <a class="el" href="class_m_d___cir_queue.html#a343d0cfe05b291f18fc6bb679112850e">setFullOverwrite()</a> method.</p>
+<p>Place the item passed into the end of the queue. The item will be returned to the calling proogram, in FIFO order, using <a class="el" href="class_m_d___cir_queue.html#a01ca4068f6e2891f79a67b6aa7bbfdc5">pop()</a>. If the buffer is already full before the <a class="el" href="class_m_d___cir_queue.html#a5edf067a72300842efbd5692fc6c3e8a">push()</a>, the behavior will depend on the the setting controlled by the <a class="el" href="class_m_d___cir_queue.html#a343d0cfe05b291f18fc6bb679112850e">setFullOverwrite()</a> method.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">itm</td><td>a pointer to data buffer of the item to be saved. Data size must be size specified in the constructor. </td></tr>
@@ -331,9 +360,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="_m_d___cir_queue_8h.html">MD_CirQueue.h</a></li>
-<li>src/<a class="el" href="_m_d___cir_queue_8cpp.html">MD_CirQueue.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -341,7 +369,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_m_d___cir_queue.html">MD_CirQueue</a></li>
-    <li class="footer">Generated on Sun Jan 22 2017 16:55:24 for MD_CirQueue Library by
+    <li class="footer">Generated on Tue Jan 24 2017 17:36:11 for MD_CirQueue Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
