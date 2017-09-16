@@ -12,19 +12,19 @@ void showStatus()
   if (Q.isFull()) Serial.print("\n->Q FULL");
 }
 
-void setup() 
+void setup()
 {
   Serial.begin(57600);
   Serial.print("\n[CQ_Test]");
 
   Q.begin();
   //Q.setFullOverwrite(true);
-  
+
   // Show status of (empty) ring buffer.
   showStatus();
-  
+
   // Try pushing 1 more item than can be queued.
-  for (uint32_t i = 0; i < QUEUE_SIZE+3; i++) 
+  for (uint32_t i = 0; i < QUEUE_SIZE+3; i++)
   {
     bool b;
 
@@ -34,9 +34,9 @@ void setup()
     Serial.print(b ? " ok" : " fail");
     showStatus();
   }
-  
+
   // Start popping bytes until buffer is empty again.
-  while (!Q.isEmpty()) 
+  while (!Q.isEmpty())
   {
 	  uint32_t	n;
 	  Q.pop((uint8_t *)&n);
