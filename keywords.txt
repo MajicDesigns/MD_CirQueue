@@ -12,7 +12,7 @@ MD_CirQueue	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-begin KEYWORD2
+begin	KEYWORD2
 push	KEYWORD2
 pop	KEYWORD2
 peek	KEYWORD2
