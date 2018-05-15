@@ -1,11 +1,11 @@
 #pragma once
 /**
 \mainpage Circular Queue Library
-This library implements a FIFO queue for generalised items, implemented as a
+This library implements a FIFO queue for generalized items, implemented as a
 circular queue. The number and size of the items that are enqueued is defined
 in the constructor, after which the calling program can push and pop items
-in FIFO order from the queue. When the queue is full the library accomodates
-both overwiting the oldest item in the queue or failing the current push()
+in FIFO order from the queue. When the queue is full the library accommodates
+both overwriting the oldest item in the queue or failing the current push()
 attempt.
 
 This mechanism is useful for holding data that needs to be asynchronously
@@ -37,9 +37,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 \page pageRevisionHistory Revision History
 Revision History
 ----------------
+May 2018 version 1.0.2
+- Maintenance release, no major changes
+
 Jan 2017 version 1.0
 - First implementation
 */
+#pragma once
 
 #include <Arduino.h>
 
@@ -68,10 +72,10 @@ public:
    * Class Constructor.
    *
    * Instantiate a new instance of the class. The parameters passed are used to
-   * configure the quanity and size of queue objects.
+   * configure the quantity and size of queue objects.
    *
-   * \param itmQty		number of items allowed in the queue.
-   * \param itmSize		size of each item in bytes.
+   * \param itmQty    number of items allowed in the queue.
+   * \param itmSize   size of each item in bytes.
    */
   MD_CirQueue(uint8_t itmQty, uint16_t itmSize) :
     _itmQty(itmQty), _itmSize(itmSize),
@@ -99,41 +103,41 @@ public:
   /**
    * Initialize the object.
    *
-   * Initialise the object data. This needs to be called during setup() to initialise new
+   * Initialize the object data. This needs to be called during setup() to initialize new
    * data for the class that cannot be done during the object creation.
    */
    void begin(void) {};
 
  /**
-	* Clear contents of buffer
-	*
-	* Clears the buffer by resetting the head and tail pointers. Does not zero out delete
-	* data in the buffer.
-	*/
+  * Clear contents of buffer
+  *
+  * Clears the buffer by resetting the head and tail pointers. Does not zero out delete
+  * data in the buffer.
+  */
    inline void clear() { _idxPut = _idxTake = _itmCount = 0; };
 
  /**
-	* Push an item into the queue
-	*
-	* Place the item passed into the end of the queue. The item will be returned
-	* to the calling proogram, in FIFO order, using pop().
-	* If the buffer is already full before the push(), the behavior will depend on the
-	* the setting controlled by the setFullOverwrite() method.
-	*
-	* @param itm	a pointer to data buffer of the item to be saved. Data size must be size specified in the constructor.
-	* @return true if the item was successfully placed in the queue, false otherwise
-	*/
-	bool push(uint8_t* itm)
+  * Push an item into the queue
+  *
+  * Place the item passed into the end of the queue. The item will be returned
+  * to the calling program, in FIFO order, using pop().
+  * If the buffer is already full before the push(), the behavior will depend on the
+  * the setting controlled by the setFullOverwrite() method.
+  *
+  * @param itm    a pointer to data buffer of the item to be saved. Data size must be size specified in the constructor.
+  * @return true  if the item was successfully placed in the queue, false otherwise
+  */
+  bool push(uint8_t* itm)
     {
-	if (isFull())
-	{
-	  if (_overwrite)
-	  {
-		CQ_PRINTS("\nOverwriting Q");
-		pop(_itmData + (_idxTake * _itmSize));	// pop it into itself ...
-	  }
-	  else
-			return(false);
+  if (isFull())
+  {
+    if (_overwrite)
+    {
+    CQ_PRINTS("\nOverwriting Q");
+    pop(_itmData + (_idxTake * _itmSize));  // pop it into itself ...
+    }
+    else
+      return(false);
     }
 
     // Save item and adjust the tail pointer
@@ -147,16 +151,16 @@ public:
   }
 
  /**
-	* Pop an item from the queue
-	*
-	* Return the first available item in the queue, copied into the buffer specified,
-	* returning a pointer to the copied item. If no items are available (queue is
-	* empty), then no data is copied and the method returns a NULL pointer.
-	*
-	* @param itm	a pointer to data buffer for the retrieved item to be saved. Data size must be size specified in the constructor.
-	* @return pointer to the memory buffer or NULL if the queue is empty
-	*/
-	uint8_t *pop(uint8_t* itm)
+  * Pop an item from the queue
+  *
+  * Return the first available item in the queue, copied into the buffer specified,
+  * returning a pointer to the copied item. If no items are available (queue is
+  * empty), then no data is copied and the method returns a NULL pointer.
+  *
+  * @param itm  a pointer to data buffer for the retrieved item to be saved. Data size must be size specified in the constructor.
+  * @return pointer to the memory buffer or NULL if the queue is empty
+  */
+  uint8_t *pop(uint8_t* itm)
     {
     if (isEmpty()) return(NULL);
 
@@ -181,7 +185,7 @@ public:
    * not remove the item in the queue but gives a 'llok-ahead' capability in
    * processing the queue.
    *
-   * @param itm	a pointer to data buffer for the copied item to be saved. Data size must be size specified in the constructor.
+   * @param itm a pointer to data buffer for the copied item to be saved. Data size must be size specified in the constructor.
    * @return pointer to the memory buffer or NULL if the queue is empty
    */
    uint8_t *peek(uint8_t* itm)
@@ -196,13 +200,13 @@ public:
    }
 
  /**
-  * Set queue full behaviour
+  * Set queue full behavior
   *
   * If the setting is set true, then push() with a full queue will overwrite the
-  * oldest item in the queue. Default behaviour is not to overwrite the oldest item
+  * oldest item in the queue. Default behavior is not to overwrite the oldest item
   * and fail the push() attempt.
   *
-  * @param b	true to ovewrite oldest item, false (default) to fail the push() call
+  * @param b  true to overwrite oldest item, false (default) to fail the push() call
   */
   inline void setFullOverwrite(bool b) { _overwrite = b; };
 
@@ -221,12 +225,12 @@ public:
   inline bool isFull() { return (_itmCount != 0 && _itmCount == _itmQty); };
 
 private:
-  uint8_t   _itmQty;    /// number of itenms in the queue
+  uint8_t   _itmQty;    /// number of items in the queue
   uint16_t  _itmSize;   /// size in bytes for each item
   uint8_t*  _itmData;   /// pointer to allocated memory buffer
 
-  uint8_t   _itmCount;	/// number of items in the queue
-  uint8_t   _idxPut;	  /// array index where the next push will occur
+  uint8_t   _itmCount;  /// number of items in the queue
+  uint8_t   _idxPut;    /// array index where the next push will occur
   uint8_t   _idxTake;   /// array index where next pop will occur
-  bool      _overwrite;	/// when true, overwrite oldest object if push() and isFull()
+  bool      _overwrite; /// when true, overwrite oldest object if push() and isFull()
 };

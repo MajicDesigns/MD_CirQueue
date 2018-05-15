@@ -1,8 +1,8 @@
 #include <MD_CirQueue.h>
 
-const uint8_t	QUEUE_SIZE = 6;
+const uint8_t QUEUE_SIZE = 6;
 
-// Define a queue that 4 unsif=gned 32 bit values.
+// Define a queue that 4 unsigned 32 bit values.
 MD_CirQueue Q(QUEUE_SIZE, sizeof(uint32_t));
 
 // Display full/empty status of ring buffer.
@@ -38,8 +38,8 @@ void setup()
   // Start popping bytes until buffer is empty again.
   while (!Q.isEmpty())
   {
-	  uint32_t	n;
-	  Q.pop((uint8_t *)&n);
+    uint32_t  n;
+    Q.pop((uint8_t *)&n);
     Serial.print("\nPopped ");
     Serial.print(n);
     showStatus();
